@@ -1,0 +1,21 @@
+schema: aoa_stackoverflow_profile_v1
+profile_id: python-datetime-timezone
+display_name: Python datetime timezone starter proof
+topic_family: programming
+language: python
+primary_tags:
+  - python
+  - datetime
+  - timezone
+  - utc
+network_default: disabled
+fixture_first: true
+seed_file: connector/seeds/python_datetime_timezone_questions.yaml
+starter_fixture: connector/fixtures/stackexchange/python_datetime_timezone_question_bundle.json
+focus:
+  - accepted_answer_as_signal
+  - score_as_weak_signal
+  - comment_warning_context
+  - newer_answer_supersession
+  - duplicate_question_context
+  - insufficient_evidence

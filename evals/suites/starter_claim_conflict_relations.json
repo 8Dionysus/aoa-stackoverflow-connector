@@ -1,0 +1,56 @@
+{
+  "schema": "aoa_stackoverflow_claim_graph_eval_suite_v1",
+  "suite_id": "starter-claim-conflict-relations",
+  "profile_id": "python-datetime-timezone",
+  "proof_owner_repo": "aoa-evals",
+  "network_touched": false,
+  "cases": [
+    {
+      "case_id": "python-datetime-stackoverflow-claim-graph-contract",
+      "fixture_run": "starter-fixture",
+      "expect": {
+        "min_claim_count": 7,
+        "min_warning_claim_count": 2,
+        "node_kinds": [
+          "question",
+          "accepted_answer",
+          "answer",
+          "comment",
+          "linked_question",
+          "tag",
+          "claim",
+          "method",
+          "tool",
+          "target",
+          "applicability_context",
+          "warning"
+        ],
+        "relation_kinds": [
+          "source_supports_claim",
+          "source_warns_about_claim",
+          "source_updates_claim",
+          "source_links_claim",
+          "answer_acceptance_supports_claim",
+          "answer_score_weakly_supports_claim",
+          "method_uses_tool",
+          "method_targets_object",
+          "warning_targets_object",
+          "warning_targets_action",
+          "claim_contextualizes_claim",
+          "claim_scope_limited_by",
+          "claim_supersedes_claim",
+          "claim_contradicts_claim",
+          "duplicate_contextualizes_question"
+        ],
+        "claim_text_contains": [
+          "datetime.now(timezone.utc)",
+          "datetime.utcnow",
+          "replace(tzinfo=...)",
+          "strip tzinfo",
+          "score_is_weak_signal",
+          "accepted_answer_signal"
+        ]
+      }
+    }
+  ]
+}

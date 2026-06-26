@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/aoa-stackoverflow/normalized_topic.schema.json",
+  "title": "AoA StackOverflow Normalized Topic",
+  "type": "object",
+  "required": ["schema", "topic_id", "source_url", "title", "captured_at", "questions", "evidence_items"],
+  "properties": {
+    "schema": { "const": "aoa_stackoverflow_normalized_topic_v1" },
+    "topic_id": { "type": "string" },
+    "source_url": { "type": "string" },
+    "title": { "type": "string" },
+    "site": { "type": "string" },
+    "captured_at": { "type": "string" },
+    "source_shape": { "type": "object" },
+    "questions": { "type": "array" },
+    "evidence_items": { "type": "array" }
+  },
+  "additionalProperties": true
+}

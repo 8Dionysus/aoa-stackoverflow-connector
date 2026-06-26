@@ -1,0 +1,103 @@
+{
+  "schema": "aoa_stackoverflow_stackexchange_fixture_v1",
+  "bundle_id": "python-datetime-timezone",
+  "site": "stackoverflow",
+  "title": "Python timezone-aware datetime UTC handling",
+  "fixture_origin": "synthetic_sanitized_stackexchange_api_shape",
+  "license_note": "Fixture prose is purpose-written for connector tests and is not copied from StackOverflow posts. Replace with properly attributed public Stack Exchange API or StackPrinter captures for live runs.",
+  "source_route_docs": [
+    "https://api.stackexchange.com/docs/questions",
+    "https://api.stackexchange.com/docs/answers-on-questions",
+    "https://api.stackexchange.com/docs/comments-on-questions",
+    "https://api.stackexchange.com/docs/linked-questions"
+  ],
+  "questions": [
+    {
+      "question_id": "fixture-python-datetime-timezone-aware-utc",
+      "link": "https://stackoverflow.com/questions/fixture-python-datetime-timezone-aware-utc",
+      "title": "How should Python code compare aware datetimes and get current UTC safely?",
+      "tags": ["python", "datetime", "timezone", "utc"],
+      "score": 184,
+      "is_answered": true,
+      "accepted_answer_id": "fixture-answer-aware-utc",
+      "creation_date": "2015-04-20T12:00:00Z",
+      "last_activity_date": "2025-02-04T09:30:00Z",
+      "last_edit_date": "2024-12-01T17:10:00Z",
+      "body_html": "<p>I have Python code that compares a database timestamp with the current UTC time. Sometimes it raises an offset-naive versus offset-aware datetime error. Should I use datetime.utcnow(), replace(tzinfo=...), or datetime.now(timezone.utc)?</p>",
+      "comments": [
+        {
+          "comment_id": "fixture-comment-question-score",
+          "score": 12,
+          "creation_date": "2024-12-02T08:00:00Z",
+          "body_html": "<p>Question score and accepted status are useful signals, but they are not truth. Check newer edits and comments.</p>"
+        }
+      ],
+      "answers": [
+        {
+          "answer_id": "fixture-answer-aware-utc",
+          "is_accepted": true,
+          "score": 512,
+          "creation_date": "2015-04-20T13:00:00Z",
+          "last_edit_date": "2020-06-10T10:30:00Z",
+          "body_html": "<p>Use timezone-aware datetime objects consistently. For current UTC, use datetime.now(timezone.utc). When converting an existing instant, use astimezone rather than pretending the timezone changed.</p>",
+          "comments": [
+            {
+              "comment_id": "fixture-comment-accepted-replace-warning",
+              "score": 31,
+              "creation_date": "2021-05-02T11:00:00Z",
+              "body_html": "<p>Warning: replace(tzinfo=...) only labels a naive datetime; it does not convert the instant and can create an incorrect instant.</p>"
+            }
+          ]
+        },
+        {
+          "answer_id": "fixture-answer-modern-utc",
+          "is_accepted": false,
+          "score": 96,
+          "creation_date": "2023-09-15T10:00:00Z",
+          "last_edit_date": "2025-02-04T09:30:00Z",
+          "body_html": "<p>Modern Python code should avoid datetime.utcnow because it returns a naive UTC datetime. Prefer datetime.now(timezone.utc), or datetime.now(UTC) on versions that expose UTC directly. This newer guidance supersedes older snippets that used utcnow for fresh code.</p>",
+          "comments": [
+            {
+              "comment_id": "fixture-comment-modern-version",
+              "score": 8,
+              "creation_date": "2025-02-04T09:45:00Z",
+              "body_html": "<p>For Python 3.12 and later, datetime.utcnow is deprecated in documentation guidance; carry the version context.</p>"
+            }
+          ]
+        },
+        {
+          "answer_id": "fixture-answer-strip-tzinfo",
+          "is_accepted": false,
+          "score": 7,
+          "creation_date": "2018-01-11T14:00:00Z",
+          "last_edit_date": "2018-01-11T14:00:00Z",
+          "body_html": "<p>A quick workaround is to strip tzinfo before comparing. This can silence the error but loses timezone meaning.</p>",
+          "comments": [
+            {
+              "comment_id": "fixture-comment-strip-warning",
+              "score": 22,
+              "creation_date": "2018-01-12T09:00:00Z",
+              "body_html": "<p>Do not strip tzinfo as a general method; it can compare different instants as if they were the same local time.</p>"
+            }
+          ]
+        }
+      ],
+      "linked_questions": [
+        {
+          "question_id": "fixture-duplicate-naive-aware",
+          "link_type": "duplicate",
+          "link": "https://stackoverflow.com/questions/fixture-duplicate-naive-aware",
+          "title": "Why does Python report offset-naive and offset-aware datetime comparison errors?",
+          "score": 302
+        },
+        {
+          "question_id": "fixture-related-zoneinfo",
+          "link_type": "related",
+          "link": "https://stackoverflow.com/questions/fixture-related-zoneinfo",
+          "title": "When should Python use zoneinfo instead of pytz?",
+          "score": 141
+        }
+      ]
+    }
+  ]
+}

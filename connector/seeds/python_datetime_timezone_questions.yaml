@@ -1,0 +1,10 @@
+schema: aoa_stackoverflow_seed_plan_v1
+profile_id: python-datetime-timezone
+network_default: disabled
+seeds:
+  - id: fixture-python-datetime-timezone-question-bundle
+    kind: fixture_stackexchange_question_bundle
+    source_url: https://stackoverflow.com/questions/fixture-python-datetime-timezone-aware-utc
+    fixture: connector/fixtures/stackexchange/python_datetime_timezone_question_bundle.json
+    max_questions: 1
+    purpose: starter no-network proof for accepted answer, score, comments, duplicate links, and freshness claims

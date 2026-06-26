@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/aoa-stackoverflow/normalized_comment.schema.json",
+  "title": "AoA StackOverflow Normalized Comment",
+  "type": "object",
+  "required": ["schema", "item_id", "item_kind", "question_id", "comment_id", "source_url", "text"],
+  "properties": {
+    "schema": { "const": "aoa_stackoverflow_normalized_item_v1" },
+    "item_id": { "type": "string" },
+    "item_kind": { "const": "comment" },
+    "question_id": { "type": "string" },
+    "answer_id": { "type": ["string", "null"] },
+    "comment_id": { "type": "string" },
+    "source_url": { "type": "string" },
+    "text": { "type": "string" },
+    "score": { "type": ["integer", "string", "null"] }
+  },
+  "additionalProperties": true
+}

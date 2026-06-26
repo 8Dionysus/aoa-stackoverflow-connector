@@ -1,0 +1,27 @@
+schema: aoa_connector_route_policy_v1
+source_family: stackoverflow
+allowed:
+  - pattern: "https://stackoverflow.com/questions/*"
+    reason: bounded public question pages
+  - pattern: "https://stackoverflow.com/q/*"
+    reason: bounded public short question routes
+  - pattern: "https://api.stackexchange.com/2.*/questions/*"
+    reason: read-only Stack Exchange API question, answer, comment, linked-question routes
+  - pattern: "https://stackprinter.appspot.com/export?service=stackoverflow*"
+    reason: read-only StackPrinter export route scoped to StackOverflow
+forbidden:
+  - pattern: "*/users/login*"
+  - pattern: "*/users/signup*"
+  - pattern: "*/users/current*"
+  - pattern: "*/inbox*"
+  - pattern: "*/posts/*"
+  - pattern: "*/questions/ask*"
+  - pattern: "*/answer*"
+  - pattern: "*/comment*"
+  - pattern: "*/edit*"
+  - pattern: "*/delete*"
+  - pattern: "*/search*"
+  - pattern: "*internal-search*"
+network_default: disabled
+read_only_default: true
+download_default: disabled

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/aoa-stackoverflow/normalized_question.schema.json",
+  "title": "AoA StackOverflow Normalized Question",
+  "type": "object",
+  "required": ["schema", "question_id", "source_url", "title", "tags", "evidence_items"],
+  "properties": {
+    "schema": { "const": "aoa_stackoverflow_normalized_question_v1" },
+    "question_id": { "type": "string" },
+    "source_url": { "type": "string" },
+    "title": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "score": { "type": ["integer", "string", "null"] },
+    "accepted_answer_id": { "type": ["string", "null"] },
+    "answers": { "type": "array" },
+    "comments": { "type": "array" },
+    "linked_questions": { "type": "array" },
+    "evidence_items": { "type": "array" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "aoa_stackoverflow_answer_eval_suite_v1",
+  "suite_id": "starter-claim-answer-packets",
+  "profile_id": "python-datetime-timezone",
+  "proof_owner_repo": "aoa-evals",
+  "network_touched": false,
+  "cases": [
+    {
+      "case_id": "accepted-answer-signal-not-truth",
+      "query": "Python datetime.now(timezone.utc) accepted answer aware UTC compare",
+      "fixture_run": "starter-fixture",
+      "expect": {
+        "answer_status": "answered",
+        "applicability_status": "applicability_supported",
+        "requires_claim_ids": true,
+        "requires_answer_ids": true,
+        "requires_item_ids": true,
+        "requires_source_urls": true,
+        "requires_accepted_signal": true,
+        "requires_score_signal": true,
+        "answer_text_contains": ["accepted-answer signal", "not treated as final authority"],
+        "network_touched": false,
+        "read_only": true
+      }
+    },
+    {
+      "case_id": "comment-warning-replace-tzinfo",
+      "query": "replace(tzinfo=...) warning incorrect instant Python datetime comment",
+      "fixture_run": "starter-fixture",
+      "expect": {
+        "answer_status": "answered",
+        "warning_status": "warning_supported",
+        "conflict_status_any": ["contextualized", "conflict_detected", "possibly_superseded"],
+        "answer_text_contains": ["Warning/comment evidence", "replace(tzinfo=...)"],
+        "requires_claim_ids": true,
+        "requires_item_ids": true
+      }
+    },
+    {
+      "case_id": "newer-answer-supersedes-utcnow",
+      "query": "datetime.utcnow deprecated newer Python 3.12 prefer datetime.now(timezone.utc)",
+      "fixture_run": "starter-fixture",
+      "expect": {
+        "answer_status": "answered",
+        "freshness_status_any": ["possibly_superseded", "conflicting_evidence", "fresh_answer"],
+        "min_superseding_claims": 1,
+        "answer_text_contains": ["Conflict or supersession evidence", "datetime.utcnow"]
+      }
+    },
+    {
+      "case_id": "duplicate-linked-question-context",
+      "query": "duplicate question offset-naive offset-aware datetime comparison context",
+      "fixture_run": "starter-fixture",
+      "expect": {
+        "answer_status": "answered",
+        "conflict_status_any": ["contextualized", "clear", "conflict_detected"],
+        "answer_text_contains": ["Linked-question evidence", "Duplicate"],
+        "context_contains": ["duplicate"]
+      }
+    },
+    {
+      "case_id": "low-score-workaround-conflict",
+      "query": "strip tzinfo before comparing loses timezone meaning workaround",
+      "fixture_run": "starter-fixture",
+      "expect": {
+        "answer_status": "answered",
+        "warning_status": "warning_supported",
+        "conflict_status_any": ["conflict_detected", "contextualized"],
+        "min_conflicting_claims": 1,
+        "requires_score_signal": true,
+        "answer_text_contains": ["score", "not truth"]
+      }
+    },
+    {
+      "case_id": "insufficient-evidence-unrelated-topic",
+      "query": "PostgreSQL vacuum freeze autovacuum tuning",
+      "fixture_run": "starter-fixture",
+      "expect": {
+        "answer_status": "insufficient_evidence",
+        "conflict_status": "insufficient_evidence",
+        "freshness_status": "insufficient_evidence",
+        "warning_status": "insufficient_evidence"
+      }
+    }
+  ]
+}
