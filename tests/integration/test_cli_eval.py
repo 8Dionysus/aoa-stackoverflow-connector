@@ -1,14 +1,16 @@
 import json
+import os
 import subprocess
 import sys
 
 
-def _run(*args: str) -> dict[str, object]:
+def _run(*args: str, env: dict[str, str] | None = None) -> dict[str, object]:
     completed = subprocess.run(
         [sys.executable, "-m", "aoa_stackoverflow_connector.cli", *args],
         check=True,
         text=True,
         capture_output=True,
+        env=env,
     )
     return json.loads(completed.stdout)
 
@@ -25,3 +27,31 @@ def test_cli_materialize_build_and_eval() -> None:
     assert claim_eval["status"] == "pass"
     answer_eval = _run("eval", "answer-packets")
     assert answer_eval["status"] == "pass"
+
+
+def test_cli_sources_registry_plans_stackoverflow_fetch_scope(tmp_path) -> None:
+    env = os.environ.copy()
+    env["CONNECTOR_DATA_ROOT"] = str(tmp_path / "data")
+    env["CONNECTOR_CACHE_ROOT"] = str(tmp_path / "cache")
+    env["CONNECTOR_ARTIFACT_ROOT"] = str(tmp_path / "artifacts")
+
+    question = _run(
+        "sources",
+        "add",
+        "https://stackoverflow.com/questions/fixture-python-datetime-timezone-aware-utc",
+        "--kind",
+        "question",
+        "--tags",
+        "python,datetime",
+        "--trust-score",
+        "0.75",
+        env=env,
+    )
+    assert question["status"] == "ok"
+    assert question["source"]["access"] == "public"
+    listed = _run("sources", "list", "--tag", "python", env=env)
+    assert listed["selected_count"] == 1
+    plan = _run("sources", "plan", "--run", "pytest-so-sources", "--limit", "10", env=env)
+    assert plan["schema"] == "aoa_stackoverflow_source_fetch_plan_v1"
+    assert plan["steps"][0]["operation"] == "fetch"
+    assert plan["network_touched"] is False
