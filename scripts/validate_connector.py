@@ -46,6 +46,16 @@ REQUIRED_FILES = [
     "evals/suites/connector-family-claim-runtime.suite.md",
     "evals/suites/starter_claim_conflict_relations.json",
     "evals/suites/starter_claim_answer_packets.json",
+    "kag/AGENTS.md",
+    "kag/README.md",
+    "kag/manifest.json",
+    "kag/nodes/source_home.json",
+    "kag/nodes/storage_boundary.json",
+    "kag/edges/source_routes_to_storage_boundary.json",
+    "kag/indexes/source_inventory.json",
+    "kag/indexes/source_surface_index.json",
+    "kag/projections/source_return.json",
+    "kag/receipts/validation_receipt.json",
     "src/aoa_stackoverflow_connector/cli.py",
 ]
 
@@ -68,6 +78,12 @@ REQUIRED_DIRS = [
     "tests/integration",
     "evals/intake",
     "evals/reports",
+    "kag",
+    "kag/nodes",
+    "kag/edges",
+    "kag/indexes",
+    "kag/projections",
+    "kag/receipts",
 ]
 
 REQUIRED_SCHEMAS = [
@@ -124,6 +140,17 @@ IGNORED_LOCAL_CACHE_DIR_NAMES = {"__pycache__", ".pytest_cache", ".mypy_cache", 
 ALLOWED_KAG_RECORD_DIRS = {("kag", "indexes")}
 
 
+def _is_allowed_kag_record_path(path: Path, rel_parts: tuple[str, ...]) -> bool:
+    if len(rel_parts) == 2 and tuple(rel_parts) in ALLOWED_KAG_RECORD_DIRS:
+        return True
+    return (
+        len(rel_parts) == 3
+        and tuple(rel_parts[:2]) in ALLOWED_KAG_RECORD_DIRS
+        and path.is_file()
+        and path.suffix == ".json"
+    )
+
+
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     errors: list[str] = []
@@ -164,7 +191,7 @@ def main() -> int:
             continue
         if rel_parts and rel_parts[0] == ".connector-state":
             continue
-        if tuple(rel_parts[:2]) in ALLOWED_KAG_RECORD_DIRS:
+        if _is_allowed_kag_record_path(path, rel_parts):
             continue
         if path.is_dir() and path.name in FORBIDDEN_HEAVY_ROOTS:
             errors.append(f"forbidden artifact directory exists inside repository: {path.relative_to(repo_root)}")
