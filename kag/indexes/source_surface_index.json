@@ -60,7 +60,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "7cce2ae04fd1d9c17c5c0d78b0e9e1576ac2c076ae0a21991816865dafb43605",
+    "content_digest": "c13e8bd2f60261b80064aa06e59fa2319dc0ed3b80d2c81cb6509563ebf56143",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -288,7 +288,7 @@
         "content_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
         "git_ref": "git-index-source-tree",
         "id": "file:.connector-state/artifacts/.gitkeep:9accf75395",
-        "mime": "application/octet-stream",
+        "mime": "text/plain",
         "path": ".connector-state/artifacts/.gitkeep",
         "repo": "aoa-stackoverflow-connector",
         "size_bytes": 1
@@ -375,7 +375,7 @@
         "content_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
         "git_ref": "git-index-source-tree",
         "id": "file:.connector-state/cache/.gitkeep:ffb60a7310",
-        "mime": "application/octet-stream",
+        "mime": "text/plain",
         "path": ".connector-state/cache/.gitkeep",
         "repo": "aoa-stackoverflow-connector",
         "size_bytes": 1
@@ -462,7 +462,7 @@
         "content_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
         "git_ref": "git-index-source-tree",
         "id": "file:.connector-state/data/.gitkeep:c10ea2dd50",
-        "mime": "application/octet-stream",
+        "mime": "text/plain",
         "path": ".connector-state/data/.gitkeep",
         "repo": "aoa-stackoverflow-connector",
         "size_bytes": 1
@@ -549,7 +549,7 @@
         "content_hash": "a679215fa6c932de756cd157fb0869b0b71cebcb6168a527b999ce5bee6a766e",
         "git_ref": "git-index-source-tree",
         "id": "file:.env.example:a3046da0d1",
-        "mime": "application/octet-stream",
+        "mime": "text/plain",
         "path": ".env.example",
         "repo": "aoa-stackoverflow-connector",
         "size_bytes": 643
@@ -633,7 +633,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "2205d984f178b6cf34050e232d662c2c927db8bcd66299725643ed98039f1122",
+        "content_hash": "6f516af9786b5ecd618a671b61226fcde2c974e325be9532bcfd23528cca4a1e",
         "git_ref": "git-index-source-tree",
         "id": "file:.github/workflows/validate.yml:a5c0f08bc4",
         "mime": "application/yaml",
@@ -672,7 +672,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "2205d984f178b6cf34050e232d662c2c927db8bcd66299725643ed98039f1122",
+        "digest": "6f516af9786b5ecd618a671b61226fcde2c974e325be9532bcfd23528cca4a1e",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -725,7 +725,7 @@
         "content_hash": "f94a4b1676b45782c4e42323ad3c351e5b6ff391108d54d1815dcba9ebca69f4",
         "git_ref": "git-index-source-tree",
         "id": "file:.gitignore:bc37d034ba",
-        "mime": "application/octet-stream",
+        "mime": "text/plain",
         "path": ".gitignore",
         "repo": "aoa-stackoverflow-connector",
         "size_bytes": 984
@@ -7083,7 +7083,7 @@
         "content_hash": "7ffafb054a8c870fae2d5fe380311f6c48340acd417555c783304bf07cf8d61d",
         "git_ref": "git-index-source-tree",
         "id": "file:pyproject.toml:50c86b7ed8",
-        "mime": "application/octet-stream",
+        "mime": "application/toml",
         "path": "pyproject.toml",
         "repo": "aoa-stackoverflow-connector",
         "size_bytes": 644
