@@ -60,7 +60,7 @@
   },
   "index_identity": {
     "artifact_kind": "source_surface_index",
-    "content_digest": "c13e8bd2f60261b80064aa06e59fa2319dc0ed3b80d2c81cb6509563ebf56143",
+    "content_digest": "1157817452eed17b601d24d446b7ee5e115610c399121bbdb2ca5517cbbd2667",
     "local_id": "index:repo-local:source-surfaces",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-index.schema.json"
   },
@@ -633,7 +633,7 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "6f516af9786b5ecd618a671b61226fcde2c974e325be9532bcfd23528cca4a1e",
+        "content_hash": "0408125f0204477ae37f9e27523102e9849ad4222ce10543d03477f7a6b8fdb0",
         "git_ref": "git-index-source-tree",
         "id": "file:.github/workflows/validate.yml:a5c0f08bc4",
         "mime": "application/yaml",
@@ -672,7 +672,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "6f516af9786b5ecd618a671b61226fcde2c974e325be9532bcfd23528cca4a1e",
+        "digest": "0408125f0204477ae37f9e27523102e9849ad4222ce10543d03477f7a6b8fdb0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -6211,13 +6211,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "9567a948b43ecb71b6c28b0821b4e55719edfaf80ca6622daf160b4d5273ded0",
+        "content_hash": "6ab7ed7cad5861249041f59a40eaebb5c6cdf7781bc541628a7c22910a58b9e0",
         "git_ref": "git-index-source-tree",
         "id": "file:kag/agents.md:f80d68b85b",
         "mime": "text/markdown",
         "path": "kag/AGENTS.md",
         "repo": "aoa-stackoverflow-connector",
-        "size_bytes": 1332
+        "size_bytes": 1348
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -6300,7 +6300,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "9567a948b43ecb71b6c28b0821b4e55719edfaf80ca6622daf160b4d5273ded0",
+        "digest": "6ab7ed7cad5861249041f59a40eaebb5c6cdf7781bc541628a7c22910a58b9e0",
         "signature_ref": "",
         "verification_state": "digest-only"
       },
@@ -6348,13 +6348,13 @@
         "state": "current"
       },
       "identity": {
-        "content_hash": "21b7cb11aceb01db6ec847732be3eef8853d6182e2f068f980f45c965c38a3ef",
+        "content_hash": "ae7c5b54cf761fc1a147b3e2f8e2a387033cdb7bf5f579e2e867ba9abac51710",
         "git_ref": "git-index-source-tree",
         "id": "file:kag/readme.md:213631cc86",
         "mime": "text/markdown",
         "path": "kag/README.md",
         "repo": "aoa-stackoverflow-connector",
-        "size_bytes": 1143
+        "size_bytes": 1154
       },
       "mechanics_role": "none",
       "observed_form": "file",
@@ -6409,7 +6409,7 @@
       },
       "signs": {
         "attestation_ref": "",
-        "digest": "21b7cb11aceb01db6ec847732be3eef8853d6182e2f068f980f45c965c38a3ef",
+        "digest": "ae7c5b54cf761fc1a147b3e2f8e2a387033cdb7bf5f579e2e867ba9abac51710",
         "signature_ref": "",
         "verification_state": "digest-only"
       },

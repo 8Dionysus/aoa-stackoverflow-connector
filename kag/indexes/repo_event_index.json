@@ -1,0 +1,133 @@
+{
+  "entries": [
+    {
+      "event_kind": "workflow_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:147835012fcf7c289a15",
+      "observation_state": "declared",
+      "path": ".github/workflows/validate.yml",
+      "source_record_id": "file:.github/workflows/validate.yml:a5c0f08bc4"
+    },
+    {
+      "event_kind": "release_lane",
+      "event_role": "declaration",
+      "heading_ref": {
+        "anchor": "unreleased",
+        "level": 2,
+        "line": 3,
+        "ref": "CHANGELOG.md#unreleased",
+        "title": "Unreleased"
+      },
+      "id": "event:repo:0ec9a2204a9b248f1cda",
+      "observation_state": "declared",
+      "path": "CHANGELOG.md",
+      "source_record_id": "file:changelog.md:06572a96a5"
+    },
+    {
+      "event_kind": "decision_record",
+      "event_role": "declaration",
+      "heading_ref": null,
+      "id": "event:repo:d35cddbbc91b768adc51",
+      "observation_state": "declared",
+      "path": "docs/decisions/AOA-STACKOVERFLOW-D-0001-third-source-connector-proof.md",
+      "source_record_id": "file:docs/decisions/aoa-stackoverflow-d-0001-third-source-connector-proof.md:ea96385e8c"
+    },
+    {
+      "event_kind": "validation_receipt",
+      "event_role": "receipt",
+      "heading_ref": null,
+      "id": "event:repo:f28b4cdea1ca8278d9d0",
+      "observation_state": "observed",
+      "path": "kag/receipts/validation_receipt.json",
+      "source_record_id": "file:kag/receipts/validation_receipt.json:8e616be0cd"
+    },
+    {
+      "event_kind": "validation_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:fbf3c0c995a91c346aea",
+      "observation_state": "declared",
+      "path": "scripts/validate_connector.py",
+      "source_record_id": "file:scripts/validate_connector.py:de39a47221"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:16cdb521806d820ae0a5",
+      "observation_state": "declared",
+      "path": "tests/contract/test_validator.py",
+      "source_record_id": "file:tests/contract/test_validator.py:d2f4ffcf08"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:025c25b7a32aee373632",
+      "observation_state": "declared",
+      "path": "tests/integration/test_cli_eval.py",
+      "source_record_id": "file:tests/integration/test_cli_eval.py:72e7f3ce47"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:0465500a2e9f4f2e2ed6",
+      "observation_state": "declared",
+      "path": "tests/unit/test_graph_answer.py",
+      "source_record_id": "file:tests/unit/test_graph_answer.py:7bd472ece7"
+    },
+    {
+      "event_kind": "test_run",
+      "event_role": "producer",
+      "heading_ref": null,
+      "id": "event:repo:26045b6ae9f0d9d0aafe",
+      "observation_state": "declared",
+      "path": "tests/unit/test_parse_normalize_policy.py",
+      "source_record_id": "file:tests/unit/test_parse_normalize_policy.py:4f69da0d97"
+    }
+  ],
+  "index_identity": {
+    "artifact_kind": "repository_event_index",
+    "content_digest": "8fbc6cf697ec5be1be8b53d4656af975ce59edf3fc32db5f86f534c526ba2780",
+    "index_kind": "event",
+    "local_id": "index:repo-local:events",
+    "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
+  },
+  "registry_output": {
+    "consumer": "aoa-kag-mcp",
+    "resource_shape": "repo-local-event-index",
+    "stable_fields": [
+      "id",
+      "event_kind",
+      "event_role",
+      "source_record_id",
+      "path",
+      "heading_ref"
+    ]
+  },
+  "repo": {
+    "git_ref": "git-index-source-tree",
+    "name": "aoa-stackoverflow-connector",
+    "owner_type": "connector",
+    "root": "."
+  },
+  "schema_version": "aoa-repo-local-kag-repository-index-v1",
+  "source_index": {
+    "content_digest": "1157817452eed17b601d24d446b7ee5e115610c399121bbdb2ca5517cbbd2667",
+    "local_id": "index:repo-local:source-surfaces",
+    "path": "kag/indexes/source_surface_index.json"
+  },
+  "summary": {
+    "entry_count": 9,
+    "kind_counts": {
+      "decision_record": 1,
+      "release_lane": 1,
+      "test_run": 4,
+      "validation_receipt": 1,
+      "validation_run": 1,
+      "workflow_run": 1
+    }
+  }
+}
