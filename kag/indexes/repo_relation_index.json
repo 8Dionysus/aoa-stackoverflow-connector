@@ -243,7 +243,6 @@
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-stackoverflow-connector:anchor:351b41201cca3872ed470c4b"],"evidence_class":"deterministic","from_id":"aoa:aoa-stackoverflow-connector:entity:ee5b977b57f46f4967c7f4dc","id":"aoa:aoa-stackoverflow-connector:relation:7744eaa248e3740833bf856e","provenance_ref":"deterministic","relation_kind":"calls","temporal_ref":"current","to_id":"aoa:aoa-stackoverflow-connector:entity:64e93e0c9b0fdf688b6b2cb9","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-stackoverflow-connector:anchor:351b41201cca3872ed470c4b"],"evidence_class":"deterministic","from_id":"aoa:aoa-stackoverflow-connector:entity:ee5b977b57f46f4967c7f4dc","id":"aoa:aoa-stackoverflow-connector:relation:495326b7d121432f79c89f5f","provenance_ref":"deterministic","relation_kind":"calls","temporal_ref":"current","to_id":"aoa:aoa-stackoverflow-connector:entity:748ec6be96e21e318dc2e5db","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-stackoverflow-connector:anchor:3782b37d07e957f575dbdb51"],"evidence_class":"deterministic","from_id":"aoa:aoa-stackoverflow-connector:entity:ee652f671b450b5cbd6c1958","id":"aoa:aoa-stackoverflow-connector:relation:7faba1e730f9642ca265333f","provenance_ref":"deterministic","relation_kind":"calls","temporal_ref":"current","to_id":"aoa:aoa-stackoverflow-connector:entity:cc3ec21b4fba8cb978bc2f3d","trust_ref":"deterministic"},
-    {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-stackoverflow-connector:anchor:75cddd982bc27bf16657a58a"],"evidence_class":"deterministic","from_id":"aoa:aoa-stackoverflow-connector:entity:eee57813871c27ba2a7f3f21","id":"aoa:aoa-stackoverflow-connector:relation:5d52b632e0a27f8d381411b4","provenance_ref":"deterministic","relation_kind":"calls","temporal_ref":"current","to_id":"aoa:aoa-stackoverflow-connector:entity:eee57813871c27ba2a7f3f21","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-stackoverflow-connector:anchor:1a6c707a8c054d08b2731f38"],"evidence_class":"deterministic","from_id":"aoa:aoa-stackoverflow-connector:entity:f157b0a7918bdeb0f46d4a52","id":"aoa:aoa-stackoverflow-connector:relation:b912b5a33a5ba46069edcb32","provenance_ref":"deterministic","relation_kind":"calls","temporal_ref":"current","to_id":"aoa:aoa-stackoverflow-connector:entity:2d9abdaf624d694b2e60471c","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-stackoverflow-connector:anchor:1a6c707a8c054d08b2731f38"],"evidence_class":"deterministic","from_id":"aoa:aoa-stackoverflow-connector:entity:f157b0a7918bdeb0f46d4a52","id":"aoa:aoa-stackoverflow-connector:relation:6e8c2ef9fd1f00b4824bcb54","provenance_ref":"deterministic","relation_kind":"calls","temporal_ref":"current","to_id":"aoa:aoa-stackoverflow-connector:entity:4f1a0e3dbd8143e8d625fd31","trust_ref":"deterministic"},
     {"confidence":1.0,"evidence_anchor_ids":["aoa:aoa-stackoverflow-connector:anchor:1a6c707a8c054d08b2731f38"],"evidence_class":"deterministic","from_id":"aoa:aoa-stackoverflow-connector:entity:f157b0a7918bdeb0f46d4a52","id":"aoa:aoa-stackoverflow-connector:relation:fb23027b27847e16fbeae7e1","provenance_ref":"deterministic","relation_kind":"calls","temporal_ref":"current","to_id":"aoa:aoa-stackoverflow-connector:entity:dd6f57a92eb33e73b7b75418","trust_ref":"deterministic"},
@@ -634,7 +633,7 @@
   ],
   "index_identity": {
     "artifact_kind": "repository_relation_index",
-    "content_digest": "bb88a205219d6750ca864016fe782f173f7d8b10015c8406977cccb72e177609",
+    "content_digest": "4f6968874c2087107498b2f4c12c3e4b60d41f8b1fc1569ba5e512e75975f462",
     "index_kind": "relation",
     "local_id": "index:repo-local:relations",
     "schema_ref": "aoa-kag:schemas/repo-local-kag-repository-index.schema.json"
@@ -720,14 +719,14 @@
   },
   "schema_version": "aoa-repo-local-kag-repository-index-v2",
   "source_index": {
-    "content_digest": "cb906ba0a028bafd6f8116081ceb11848db808d0c7c227a99a4c5e0cce609ef9",
+    "content_digest": "9430ac111c0659fa763db3c3dc5678fda276153a09cb65c18ba7a0baacb57f4d",
     "local_id": "index:repo-local:source-surfaces",
     "path": "kag/indexes/source_surface_index.json"
   },
   "summary": {
-    "entry_count": 631,
+    "entry_count": 630,
     "kind_counts": {
-      "calls": 255,
+      "calls": 254,
       "contains": 135,
       "defines": 178,
       "references": 1,
