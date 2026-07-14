@@ -28,22 +28,12 @@ bounded question bundle.
 | Cross-connector report | `docs/CROSS_CONNECTOR_GENERALIZATION_REPORT.md` |
 | Validation | `scripts/validate_connector.py`, `tests/` |
 
-## Safe Quickstart
+## Bounded Operator Route
 
-```bash
-python -m venv .venv
-. .venv/bin/activate
-python -m pip install -e ".[dev]"
-python scripts/validate_connector.py
-python -m pytest -q
-aoa-stackoverflow doctor
-aoa-stackoverflow materialize fixture
-aoa-stackoverflow build-index --run starter-fixture
-aoa-stackoverflow build-graph --run starter-fixture
-aoa-stackoverflow answer "Python datetime.utcnow deprecated prefer datetime.now(timezone.utc)" --run starter-fixture
-aoa-stackoverflow eval claim-relations
-aoa-stackoverflow eval answer-packets
-```
+The short validation and no-network starter route lives in `AGENTS.md`.
+Package metadata and the installed entry point live in `pyproject.toml`; exact
+behavior remains with the CLI parser, repository validator, tests, and CI
+workflow.
 
 The default skeleton does not crawl StackOverflow. It materializes a tiny
 synthetic/sanitized Stack Exchange API-shaped question bundle for no-network
@@ -88,15 +78,17 @@ repo-local storage:
 .connector-state/artifacts
 ```
 
-For larger local runs, route generated state outside Git:
+For larger local runs, route generated state outside Git with the portable
+variables defined by `connector/STORAGE_POLICY.md` and `.env.example`.
 
-```bash
-export CONNECTOR_FAMILY_ROOT=/path/to/connector-databases
-export CONNECTOR_INSTANCE_ROOT="$CONNECTOR_FAMILY_ROOT/aoa-stackoverflow-connector"
-export CONNECTOR_DATA_ROOT="$CONNECTOR_INSTANCE_ROOT/data"
-export CONNECTOR_CACHE_ROOT="$CONNECTOR_INSTANCE_ROOT/cache"
-export CONNECTOR_ARTIFACT_ROOT="$CONNECTOR_INSTANCE_ROOT/artifacts"
-```
+## Local Statistics
+
+The root `stats/` port reports how much of the canonical public starter
+fixture's question, answer, comment, and linked-question record population is
+materialized as normalized evidence with matching source identity. It exports
+only reference counts and owner evidence links. Source content, accepted-answer
+and score interpretation, eval verdicts, retrieval quality, readiness, and
+runtime truth remain with their owners.
 
 ## Current Status
 

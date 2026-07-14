@@ -1,0 +1,123 @@
+{
+  "schema_version": "aoa_stats_local_port_v1",
+  "contract_version": "1.0.0",
+  "owner_repo": "aoa-stackoverflow-connector",
+  "status": "active",
+  "owner_boundary_ref": "BOUNDARIES.md",
+  "central_contract_refs": [
+    "aoa-stats:stats/measurement-contract/measurement-contract.schema.json",
+    "aoa-stats:stats/measurement-contract/measurement-packet.schema.json"
+  ],
+  "evidence_posture": {
+    "live_state": "reference_only",
+    "privacy": "public",
+    "raw_content_allowed": false
+  },
+  "questions": [
+    {
+      "id": "question:public-fixture-source-record-evidence-materialization-ratio",
+      "question": "What fraction of valid question, answer, comment, and linked-question records declared by the canonical public Stack Exchange-shaped starter fixture are materialized as normalized evidence items with matching source identity and policy-allowed source routes?",
+      "consumer_refs": [
+        "stats/README.md",
+        "docs/STARTER_PROOF.md",
+        "docs/ARCHITECTURE.md"
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "schema_version": "aoa_stats_measurement_contract_v1",
+      "measurement_id": "aoa-stackoverflow-connector/public-fixture-source-record-evidence-materialization-ratio",
+      "contract_version": "1.0.0",
+      "owner_repo": "aoa-stackoverflow-connector",
+      "question_ref": "question:public-fixture-source-record-evidence-materialization-ratio",
+      "semantic_class": "statistic",
+      "statistic": "ratio",
+      "object_kind": "fixture-stackexchange-source-record",
+      "unit": {
+        "symbol": "1",
+        "quantity": "proportion"
+      },
+      "population": {
+        "subject": "question, answer, comment, and linked-question records declared by the canonical public Stack Exchange-shaped starter fixture",
+        "definition": "one unique valid question, answer, question or answer comment, or linked-question record with non-empty source identity, evidence-bearing text or title, and a policy-allowed public StackOverflow route in the complete current fixture",
+        "inclusion_rule": "every valid unique source record in the complete canonical public starter fixture",
+        "exclusion_rule": "record text, tags, entities, accepted-answer or score interpretation, generated index and graph objects, claims, answer packets, eval outcomes, live StackOverflow content, readiness, proof, and runtime state",
+        "sampling": "census"
+      },
+      "window": {
+        "temporality": "instant",
+        "clock": "owner_defined"
+      },
+      "dimensions": {
+        "allowed": [
+          {
+            "name": "source_record_kind",
+            "max_cardinality": 4,
+            "sensitivity": "public"
+          }
+        ],
+        "prohibited": [
+          "question_id",
+          "answer_id",
+          "comment_id",
+          "linked_question_id",
+          "item_id",
+          "user_id",
+          "run_id"
+        ]
+      },
+      "aggregation": {
+        "operator": "ratio_of_sums",
+        "across": [
+          "dimension"
+        ]
+      },
+      "missingness": {
+        "states": [
+          "missing",
+          "unknown",
+          "stale"
+        ],
+        "zero_is_observation": true
+      },
+      "uncertainty": {
+        "required": false,
+        "methods": [
+          "not_applicable"
+        ]
+      },
+      "provenance": {
+        "evidence_refs_required": true,
+        "source_revision_required": true
+      },
+      "lifecycle": {
+        "status": "active",
+        "compatible_with": []
+      },
+      "privacy": {
+        "classification": "public",
+        "raw_content_allowed": false,
+        "sensitive_dimensions_allowed": false
+      },
+      "live_state": {
+        "capability": "reference_only"
+      },
+      "authority_ceiling": "Reports only the fraction of valid source records in the canonical public starter fixture that the current normalizer materializes with matching StackOverflow identities and policy-allowed source routes at one source revision; it does not establish content completeness or correctness, live-source coverage, accepted-answer truth, score meaning, claim extraction, index or graph quality, retrieval or answer quality, connector readiness, eval success, proof verdicts, or runtime health."
+    }
+  ],
+  "exports": [
+    {
+      "measurement_id": "aoa-stackoverflow-connector/public-fixture-source-record-evidence-materialization-ratio",
+      "posture": "reference",
+      "packet_refs": [
+        "stats/packets/public-fixture-source-record-evidence-materialization-ratio.reference.json"
+      ],
+      "evidence_refs": [
+        "connector/fixtures/stackexchange/python_datetime_timezone_question_bundle.json",
+        "src/aoa_stackoverflow_connector/normalize/__init__.py",
+        "connector/SOURCE_POLICY.md"
+      ]
+    }
+  ]
+}

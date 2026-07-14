@@ -17,6 +17,8 @@ It proves:
 - eval suites catch accepted-answer-as-signal, score-as-weak-signal, comment
   warnings, duplicate context, freshness supersession, conflicts, and
   insufficient evidence
+- the source-record evidence materialization census is reproducible over the
+  complete public fixture population
 
 It does not prove:
 
@@ -25,3 +27,5 @@ It does not prove:
 - write/search/private route support
 - completeness for Python datetime
 - that accepted answers or high scores are truth
+- live-source completeness, retrieval or answer quality, eval success,
+  connector readiness, or runtime health from the reference statistic

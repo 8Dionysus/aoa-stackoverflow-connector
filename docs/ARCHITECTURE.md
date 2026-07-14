@@ -51,3 +51,12 @@ created only after several connectors prove which parts are truly common.
 
 See `docs/CROSS_CONNECTOR_GENERALIZATION_REPORT.md` for the current 4PDA, XDA,
 and StackOverflow comparison.
+
+## Local Statistics
+
+The root `stats/` port measures bounded properties of connector-authored source
+and normalized evidence objects. Its current reference question is whether the
+canonical public fixture's complete source-record census is materialized with
+matching StackOverflow identities and policy-allowed source routes. The port
+does not evaluate claim extraction, graph or answer quality, source truth,
+readiness, or runtime behavior.

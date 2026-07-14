@@ -30,3 +30,11 @@
 The repo may include method, code, schemas, docs, small fixtures, and small
 proof reports. It must not include full raw captures, large normalized corpora,
 indexes, vector databases, graph databases, or generated caches.
+
+## Local Statistics Boundary
+
+The root `stats/` port may derive privacy-bounded measurements from public
+fixtures and connector outputs. It does not own StackOverflow content,
+accepted-answer or score truth, claim or answer correctness, eval verdicts,
+connector readiness, or runtime state. Shared measurement grammar remains with
+`aoa-stats`.
