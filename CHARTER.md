@@ -19,5 +19,7 @@ seeds.
 - evidence chains with source URLs, item IDs, question/answer/comment IDs, and
   claim IDs
 - accepted answer and score handled as signals, not truth
+- owner-local reference statistics over bounded connector evidence without
+  acquiring source, eval, answer, or runtime authority
 - local eval suites before live expansion
 - heavy generated data excluded from Git

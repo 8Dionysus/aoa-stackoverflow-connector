@@ -17,6 +17,7 @@ This repository owns:
 - StackOverflow source policy and route allowlist/denylist
 - StackOverflow question/answer/comment/linked-question parser and normalizer
 - local keyword index, claim graph, answer packet, and eval skeletons
+- bounded owner-local statistics over connector-authored source and evidence objects
 - small synthetic/sanitized fixtures and bounded starter profile routes
 - connector-local validation and install route docs
 
@@ -28,6 +29,8 @@ It does not own:
 - full raw captures, large indexes, graph databases, embeddings, or caches
 - runtime/MCP deployment, which belongs in `abyss-stack`
 - central eval verdicts or proof doctrine, which belong in `aoa-evals`
+- shared statistical grammar or cross-owner composition, which belong in
+  `aoa-stats`
 
 ## Start Here
 
@@ -40,6 +43,7 @@ It does not own:
 7. `docs/RUNTIME_CONTRACT.md`
 8. `docs/AGENT_INSTALL_ROUTE.md`
 9. `docs/decisions/README.md`
+10. `stats/AGENTS.md` for owner-local statistical questions
 
 Before large data, runtime, AI, or benchmark work, also read
 `/etc/abyss-machine/AGENTS.md` and `/etc/abyss-machine/storage-policy.json`.
@@ -54,6 +58,9 @@ Before large data, runtime, AI, or benchmark work, also read
 - Do not commit raw captures, indexes, graph DBs, vector stores, caches, or full
   exports.
 - Treat accepted-answer and score signals as evidence context, not truth.
+- Local statistics may describe bounded fixture and connector outputs, but do
+  not establish source completeness, answer quality, eval success, connector
+  readiness, or runtime truth.
 - The repo-local `.connector-state/` directory is an ignored workspace for
   small starter runs. Treat generated files inside it as local state, not source
   truth.
@@ -72,7 +79,12 @@ PYTHONPATH=src python -m aoa_stackoverflow_connector.cli build-graph --run start
 PYTHONPATH=src python -m aoa_stackoverflow_connector.cli eval claim-relations
 PYTHONPATH=src python -m aoa_stackoverflow_connector.cli eval answer-packets
 python /srv/AbyssOS/aoa-evals/scripts/validate_local_eval_port.py --target-root . --json
+AOA_STATS_ROOT=/path/to/aoa-stats python scripts/validate_local_stats_port.py
 ```
+
+The CI workflow owns the exhaustive repository route. Ordinary Markdown
+explains behavior and returns to executable owners rather than duplicating
+command catalogs.
 
 ## Closeout
 

@@ -1,37 +1,20 @@
 # Install
 
-## Fresh Clone
+## Executable Owners
 
-```bash
-python -m venv .venv
-. .venv/bin/activate
-python -m pip install -e ".[dev]"
-python scripts/validate_connector.py
-python -m pytest -q
-```
+`pyproject.toml` owns package metadata and the installed entry point.
+`scripts/validate_connector.py` owns repository validation, the CLI parser owns
+exact command syntax, and `.github/workflows/validate.yml` owns the required CI
+sequence. The bounded operator route is kept in `AGENTS.md`.
 
 ## No-Network Starter Proof
 
-```bash
-aoa-stackoverflow doctor
-aoa-stackoverflow materialize fixture
-aoa-stackoverflow build-index --run starter-fixture
-aoa-stackoverflow build-graph --run starter-fixture
-aoa-stackoverflow answer "Python datetime.utcnow deprecated prefer datetime.now(timezone.utc)" --run starter-fixture
-aoa-stackoverflow eval claim-relations
-aoa-stackoverflow eval answer-packets
-```
+After installation, follow the short route in `AGENTS.md`. It diagnoses local
+storage, materializes the sanitized fixture, builds its index and graph, and
+exercises the local eval surfaces without crawling StackOverflow.
 
 ## External Storage
 
-For larger local runs:
-
-```bash
-export CONNECTOR_FAMILY_ROOT=/path/to/connector-databases
-export CONNECTOR_INSTANCE_ROOT="$CONNECTOR_FAMILY_ROOT/aoa-stackoverflow-connector"
-export CONNECTOR_DATA_ROOT="$CONNECTOR_INSTANCE_ROOT/data"
-export CONNECTOR_CACHE_ROOT="$CONNECTOR_INSTANCE_ROOT/cache"
-export CONNECTOR_ARTIFACT_ROOT="$CONNECTOR_INSTANCE_ROOT/artifacts"
-```
-
-Do not commit generated state from those roots.
+For larger local runs, configure the portable roots defined by
+`connector/STORAGE_POLICY.md` and `.env.example`. Generated state from those
+roots remains outside Git.

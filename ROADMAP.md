@@ -7,6 +7,8 @@
 - Keep StackOverflow parser and extractor source-specific while preserving the
   shared claim/report vocabulary.
 - Treat accepted answer and score as signals, not truth.
+- Keep a reference census of source-record evidence materialization for the
+  canonical public starter fixture.
 
 ## Next
 
