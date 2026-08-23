@@ -2,6 +2,60 @@
 
 ## Unreleased
 
+## [0.1.2] - 2026-08-23
+
+### Summary
+
+Corrective source successor for the exact-current KAG provider contract. The
+connector now revalidates the published `aoa-kag@v0.5.2` provider at
+`8136d3eb629da28cea1206d13a8f1df52ee14739` against the published
+`aoa-stats@v0.2.2` provider at
+`f119805cda69b3edeb2a4c5e407368d70e68650d`.
+
+### Changed
+
+- Updated the workflow and owner-local release contract to the exact-current
+  provider tag/commit identities.
+- Declared the KAG provider identity separately from the pinned
+  `repo-local-kag-index` action identity at
+  `8136d3eb629da28cea1206d13a8f1df52ee14739`.
+- Re-ran the canonical KAG generated-family route against the successor source
+  and preserved its source-only, generated-state, and compatibility limits.
+- Advanced the package and source version markers to `0.1.2`.
+
+### Fixed
+
+- Removed the stale `aoa-kag@v0.5.0` and `aoa-stats@v0.2.1` declarations from
+  the current consumer compatibility contract.
+- Preserved the immutable `v0.1.1` and `v0.1.0` tags and GitHub Releases.
+
+### Compatibility and migration
+
+- No breaking change is declared for connector packet schemas, CLI behavior,
+  source policy, stats packet meaning, or runtime handoff fields.
+- Consumers must bind the exact `v0.1.2` source release and independently
+  perform their own artifact admission, deployment, runtime, proof, and
+  acceptance checks.
+
+### Validation
+
+- The exact KAG `v0.5.2` provider checkout and separately identified action
+  commit are used for the owner-family gate; the exact stats `v0.2.2`
+  checkout is used for the local stats port.
+- The connector validator, offline tests, CLI checks, local eval port,
+  release contract, hosted CI, tag, GitHub Release, and postpublish audit are
+  the owner evidence for this successor.
+
+### Notes, limitations, and non-claims
+
+- This is a source-only patch release. This connector has no admitted artifact
+  class in the common federation registry; no package artifact, artifact
+  admission, runtime deployment, central proof, runtime health, or human
+  acceptance is claimed.
+- Federation responses, artifact trust verdicts, and generated read models
+  remain separate owner claims; no verdict is manually rewritten by this
+  release.
+
 ## [0.1.1] - 2026-08-23
 
 ### Summary
