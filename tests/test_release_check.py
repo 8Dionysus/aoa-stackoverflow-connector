@@ -19,13 +19,13 @@ def load_module():
 def test_source_release_contract_is_complete() -> None:
     result = load_module().validate()
     assert result["ok"] is True
-    assert result["version_markers"] == {"pyproject": "0.1.0", "package": "0.1.0"}
+    assert result["version_markers"] == {"pyproject": "0.1.1", "package": "0.1.1"}
     assert result["provider_pins"]["aoa-kag@v0.5.0"] == "813a7f69dc96ec031dad9b897a6991792cc48b7a"
-    assert result["provider_pins"]["aoa-stats@v0.2.0"] == "dc608fd5de3fcaf0301f356c9efd52e2bdd350ce"
+    assert result["provider_pins"]["aoa-stats@v0.2.1"] == "339ecb2db22ac4552fa88756b650896ebbff5b56"
 
 
 def test_release_section_is_canonical_and_human_first() -> None:
-    section = load_module().release_section((ROOT / "CHANGELOG.md").read_text(), "0.1.0")
-    assert section.startswith("## [0.1.0]")
-    assert "First-Parent Reconciliation (14/14)" in section
+    section = load_module().release_section((ROOT / "CHANGELOG.md").read_text(), "0.1.1")
+    assert section.startswith("## [0.1.1]")
+    assert "aoa-stats@v0.2.1" in section
     assert "runtime health" in section

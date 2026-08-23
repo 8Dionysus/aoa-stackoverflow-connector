@@ -18,7 +18,7 @@ implied.
   | Provider | Published tag | Resolved commit |
   | --- | --- | --- |
   | `8Dionysus/aoa-kag` | `v0.5.0` | `813a7f69dc96ec031dad9b897a6991792cc48b7a` |
-  | `8Dionysus/aoa-stats` | `v0.2.0` | `dc608fd5de3fcaf0301f356c9efd52e2bdd350ce` |
+  | `8Dionysus/aoa-stats` | `v0.2.1` | `339ecb2db22ac4552fa88756b650896ebbff5b56` |
 
   The workflow pins the resolved commits. Release preparation must verify
   that each commit is the object named by the corresponding published tag and
@@ -51,7 +51,7 @@ for this repository until an explicit owner change admits it to federation.
 ## Owner-local dry-run and publication
 
 The script is intentionally fail-closed and does not mutate with `dry-run`:
-run `python scripts/release.py dry-run --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --json`.
+run `python scripts/release.py dry-run --version 0.1.1 --tag v0.1.1 --expected-commit <exact-landed-main-sha> --json`.
 
 The dry-run verifies the branch, clean tree, exact `origin/main` identity,
 version markers, canonical changelog section, provider pins, absent remote
@@ -59,7 +59,7 @@ tag/release, and source-only release posture. It is the owner-local strict
 preflight for this non-federated repository.
 
 Only after the dry-run passes and the exact commit is on `main`, publish with
-the explicit mutation gate `python scripts/release.py publish --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --confirm --json`.
+the explicit mutation gate `python scripts/release.py publish --version 0.1.1 --tag v0.1.1 --expected-commit <exact-landed-main-sha> --confirm --json`.
 
 The command creates an annotated tag at the exact landed commit, pushes only
 that tag, and creates a non-draft, non-prerelease GitHub Release whose body is
@@ -70,11 +70,11 @@ different commit.
 
 On hosts whose system SSH configuration is not usable, keep the workaround
 explicit at the command boundary rather than changing repository remotes. Use
-`GIT_SSH_COMMAND='ssh -F /dev/null' python scripts/release.py publish --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --confirm --json`.
+`GIT_SSH_COMMAND='ssh -F /dev/null' python scripts/release.py publish --version 0.1.1 --tag v0.1.1 --expected-commit <exact-landed-main-sha> --confirm --json`.
 
 ## Postpublish audit
 
-Run the audit separately on the published state with `python scripts/release.py audit --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --json`.
+Run the audit separately on the published state with `python scripts/release.py audit --version 0.1.1 --tag v0.1.1 --expected-commit <exact-landed-main-sha> --json`.
 
 The audit checks the annotated tag object and peeled commit, release body,
 release URL, published/non-prerelease/latest semantics, absence of unexpected

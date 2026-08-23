@@ -2,6 +2,53 @@
 
 ## Unreleased
 
+## [0.1.1] - 2026-08-23
+
+### Summary
+
+Patch successor for the source and validation plane. The connector now
+revalidates and pins the exact published `aoa-stats@v0.2.1` provider commit
+`339ecb2db22ac4552fa88756b650896ebbff5b56` while preserving the immutable
+`v0.1.0` release and its historical provider references.
+
+### Changed
+
+- Updated the consumer workflow and owner-local release contract to the exact
+  `aoa-stats@v0.2.1` provider identity.
+- Refreshed the repo-local KAG generated family for the successor source
+  surface using the exact `aoa-kag@v0.5.0` owner-family gate.
+- Advanced the package and source version markers to `0.1.1` for this patch
+  successor.
+
+### Fixed
+
+- Removed the stale provider pin from the current consumer compatibility gate;
+  the old `v0.1.0` tag and GitHub Release remain untouched.
+
+### Compatibility and migration
+
+- No breaking change is declared for connector packet schemas, CLI behavior,
+  source policy, stats packet meaning, or runtime handoff fields.
+- Consumers must bind the exact `v0.1.1` source release and independently
+  perform their own artifact admission, deployment, runtime, proof, and
+  acceptance checks.
+
+### Validation
+
+- Exact `aoa-stats@v0.2.1` source checkout passes the connector local stats
+  port and targeted local stats tests.
+- The complete connector validator, offline test suite, CLI checks, eval port,
+  exact KAG owner-family gate, release dry-run, CI, tag, GitHub Release, and
+  postpublish audit are recorded in the execution report.
+
+### Notes, limitations, and non-claims
+
+- This is a source-only patch release. It does not publish a package artifact,
+  deploy a runtime, admit a consumer, establish central proof, or claim human
+  acceptance or runtime health.
+- Artifact trust verdicts remain owner-produced and are reported separately;
+  no verdict is manually rewritten by this release.
+
 ## [0.1.0] - 2026-08-22
 
 ### Summary
