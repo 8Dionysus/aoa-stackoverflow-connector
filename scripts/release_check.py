@@ -16,7 +16,7 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_PROVIDER_PINS = {
     "aoa-kag@v0.5.0": "813a7f69dc96ec031dad9b897a6991792cc48b7a",
-    "aoa-stats@v0.2.0": "dc608fd5de3fcaf0301f356c9efd52e2bdd350ce",
+    "aoa-stats@v0.2.1": "339ecb2db22ac4552fa88756b650896ebbff5b56",
 }
 
 
@@ -38,11 +38,11 @@ def _provider_pins(workflow: str) -> dict[str, str]:
     stats_match = re.search(r"repository:\s*8Dionysus/aoa-stats.*?\n\s*#.*?\n\s*ref:\s*([0-9a-f]{40})", workflow, re.DOTALL)
     return {
         "aoa-kag@v0.5.0": kag_match.group(1) if kag_match else "",
-        "aoa-stats@v0.2.0": stats_match.group(1) if stats_match else "",
+        "aoa-stats@v0.2.1": stats_match.group(1) if stats_match else "",
     }
 
 
-def validate(*, version: str = "0.1.0", tag: str = "v0.1.0") -> dict[str, Any]:
+def validate(*, version: str = "0.1.1", tag: str = "v0.1.1") -> dict[str, Any]:
     errors: list[str] = []
     pyproject_path = REPO_ROOT / "pyproject.toml"
     package_path = REPO_ROOT / "src" / "aoa_stackoverflow_connector" / "__init__.py"
@@ -94,8 +94,8 @@ def validate(*, version: str = "0.1.0", tag: str = "v0.1.0") -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", default="0.1.0")
-    parser.add_argument("--tag", default="v0.1.0")
+    parser.add_argument("--version", default="0.1.1")
+    parser.add_argument("--tag", default="v0.1.1")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
     result = validate(version=args.version, tag=args.tag)
