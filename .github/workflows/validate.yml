@@ -11,16 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check repo-local KAG index family
-        # aoa-kag@v0.5.0, resolved at 813a7f69dc96ec031dad9b897a6991792cc48b7a.
-        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@813a7f69dc96ec031dad9b897a6991792cc48b7a
+        # Provider: aoa-kag@v0.5.2, resolved at 8136d3eb629da28cea1206d13a8f1df52ee14739.
+        # Action identity: repo-local-kag-index at 8136d3eb629da28cea1206d13a8f1df52ee14739.
+        uses: 8Dionysus/aoa-kag/.github/actions/repo-local-kag-index@8136d3eb629da28cea1206d13a8f1df52ee14739
         with:
           history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
           event-history-ref: ${{ github.event.pull_request.base.sha || github.event.before || format('{0}^', github.sha) }}
       - uses: actions/checkout@v4
         with:
           repository: 8Dionysus/aoa-stats
-          # aoa-stats@v0.2.1, resolved at 339ecb2db22ac4552fa88756b650896ebbff5b56.
-          ref: 339ecb2db22ac4552fa88756b650896ebbff5b56
+          # Provider: aoa-stats@v0.2.2, resolved at f119805cda69b3edeb2a4c5e407368d70e68650d.
+          ref: f119805cda69b3edeb2a4c5e407368d70e68650d
           path: .deps/aoa-stats
       - uses: actions/setup-python@v5
         with:

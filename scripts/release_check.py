@@ -15,8 +15,11 @@ from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_PROVIDER_PINS = {
-    "aoa-kag@v0.5.0": "813a7f69dc96ec031dad9b897a6991792cc48b7a",
-    "aoa-stats@v0.2.1": "339ecb2db22ac4552fa88756b650896ebbff5b56",
+    "aoa-kag@v0.5.2": "8136d3eb629da28cea1206d13a8f1df52ee14739",
+    "aoa-stats@v0.2.2": "f119805cda69b3edeb2a4c5e407368d70e68650d",
+}
+EXPECTED_ACTION_PINS = {
+    "aoa-kag/.github/actions/repo-local-kag-index": "8136d3eb629da28cea1206d13a8f1df52ee14739",
 }
 
 
@@ -34,15 +37,34 @@ def release_section(changelog: str, version: str) -> str:
 
 
 def _provider_pins(workflow: str) -> dict[str, str]:
-    kag_match = re.search(r"8Dionysus/aoa-kag/\.github/actions/repo-local-kag-index@([0-9a-f]{40})", workflow)
-    stats_match = re.search(r"repository:\s*8Dionysus/aoa-stats.*?\n\s*#.*?\n\s*ref:\s*([0-9a-f]{40})", workflow, re.DOTALL)
+    kag_match = re.search(
+        r"#\s*Provider:\s*aoa-kag@v0\.5\.2,\s*resolved at\s*([0-9a-f]{40})",
+        workflow,
+    )
+    stats_match = re.search(
+        r"repository:\s*8Dionysus/aoa-stats.*?\n\s*#\s*Provider:\s*aoa-stats@v0\.2\.2,\s*resolved at\s*([0-9a-f]{40})",
+        workflow,
+        re.DOTALL,
+    )
     return {
-        "aoa-kag@v0.5.0": kag_match.group(1) if kag_match else "",
-        "aoa-stats@v0.2.1": stats_match.group(1) if stats_match else "",
+        "aoa-kag@v0.5.2": kag_match.group(1) if kag_match else "",
+        "aoa-stats@v0.2.2": stats_match.group(1) if stats_match else "",
     }
 
 
-def validate(*, version: str = "0.1.1", tag: str = "v0.1.1") -> dict[str, Any]:
+def _action_pins(workflow: str) -> dict[str, str]:
+    action_match = re.search(
+        r"8Dionysus/aoa-kag/\.github/actions/repo-local-kag-index@([0-9a-f]{40})",
+        workflow,
+    )
+    return {
+        "aoa-kag/.github/actions/repo-local-kag-index": action_match.group(1)
+        if action_match
+        else ""
+    }
+
+
+def validate(*, version: str = "0.1.2", tag: str = "v0.1.2") -> dict[str, Any]:
     errors: list[str] = []
     pyproject_path = REPO_ROOT / "pyproject.toml"
     package_path = REPO_ROOT / "src" / "aoa_stackoverflow_connector" / "__init__.py"
@@ -71,10 +93,15 @@ def validate(*, version: str = "0.1.1", tag: str = "v0.1.1") -> dict[str, Any]:
         section = ""
         errors.append(str(exc))
 
-    pins = _provider_pins(workflow_path.read_text(encoding="utf-8") if workflow_path.is_file() else "")
+    workflow = workflow_path.read_text(encoding="utf-8") if workflow_path.is_file() else ""
+    pins = _provider_pins(workflow)
+    action_pins = _action_pins(workflow)
     for dependency, expected in EXPECTED_PROVIDER_PINS.items():
         if pins.get(dependency) != expected:
             errors.append(f"workflow pin for {dependency} is {pins.get(dependency)!r}, expected {expected!r}")
+    for action, expected in EXPECTED_ACTION_PINS.items():
+        if action_pins.get(action) != expected:
+            errors.append(f"workflow action pin for {action} is {action_pins.get(action)!r}, expected {expected!r}")
 
     if not tag.startswith("v") or tag[1:] != version:
         errors.append(f"tag {tag!r} does not match version {version!r}")
@@ -87,6 +114,7 @@ def validate(*, version: str = "0.1.1", tag: str = "v0.1.1") -> dict[str, Any]:
         "tag": tag,
         "version_markers": {"pyproject": project_version, "package": package_version},
         "provider_pins": pins,
+        "action_pins": action_pins,
         "release_section_sha256": f"sha256:{hashlib.sha256(section.encode()).hexdigest()}" if section else None,
         "errors": errors,
     }
@@ -94,8 +122,8 @@ def validate(*, version: str = "0.1.1", tag: str = "v0.1.1") -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", default="0.1.1")
-    parser.add_argument("--tag", default="v0.1.1")
+    parser.add_argument("--version", default="0.1.2")
+    parser.add_argument("--tag", default="v0.1.2")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
     result = validate(version=args.version, tag=args.tag)
