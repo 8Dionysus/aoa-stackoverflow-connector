@@ -234,8 +234,8 @@ def publish(version: str, tag: str, expected_commit: str, confirm: bool) -> dict
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=("dry-run", "publish", "audit"))
-    parser.add_argument("--version", default="0.1.2")
-    parser.add_argument("--tag", default="v0.1.2")
+    parser.add_argument("--version", default="0.1.0")
+    parser.add_argument("--tag", default="v0.1.0")
     parser.add_argument("--expected-commit", required=True)
     parser.add_argument("--confirm", action="store_true")
     parser.add_argument("--json", action="store_true")
