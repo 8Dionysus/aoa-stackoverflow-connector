@@ -17,9 +17,9 @@ implied.
 
   | Surface | Published tag | Resolved commit |
   | --- | --- | --- |
-  | `8Dionysus/aoa-kag` provider | `v0.5.2` | `8136d3eb629da28cea1206d13a8f1df52ee14739` |
-  | `8Dionysus/aoa-kag` action `repo-local-kag-index` | not a provider tag | `8136d3eb629da28cea1206d13a8f1df52ee14739` |
-  | `8Dionysus/aoa-stats` provider | `v0.2.2` | `f119805cda69b3edeb2a4c5e407368d70e68650d` |
+  | `8Dionysus/aoa-kag` provider | `v0.5.0` | `f46f146cc79a26fa81ad0f400b9c5774df293e57` |
+  | `8Dionysus/aoa-kag` action `repo-local-kag-index` | not a provider tag | `f46f146cc79a26fa81ad0f400b9c5774df293e57` |
+  | `8Dionysus/aoa-stats` provider | `v0.2.0` | `88ff38b1b38eef939f2c5b4541cbe8363a05fc8d` |
 
   The workflow declares the provider tag/commit identities separately from
   the KAG action identity. Release preparation must verify that each provider
@@ -44,8 +44,8 @@ for this repository until an explicit owner change admits it to federation.
 3. Run the owner route against exact provider tag checkouts: `AOA_STATS_ROOT=.deps/aoa-stats python scripts/validate_local_stats_port.py`, `python scripts/validate_connector.py`, `PYTHONPATH=src python -m pytest -q`, `PYTHONPATH=src python -m aoa_stackoverflow_connector.cli doctor`, `PYTHONPATH=src python -m aoa_stackoverflow_connector.cli policy check`, and `python /srv/AbyssOS/aoa-evals/scripts/validate_local_eval_port.py --target-root . --json`.
 
 4. Run the exact KAG owner-family gate from the checkout of
-   `aoa-kag@v0.5.2`, using the separately pinned
-   `repo-local-kag-index@8136d3eb629da28cea1206d13a8f1df52ee14739` action
+   `aoa-kag@v0.5.0`, using the separately pinned
+   `repo-local-kag-index@f46f146cc79a26fa81ad0f400b9c5774df293e57` action
    identity. The KAG gate is a generated/provider validation claim;
    it is not runtime health, proof, or acceptance.
 5. Build a source-only sdist/wheel in a task-local directory if artifact
@@ -56,7 +56,7 @@ for this repository until an explicit owner change admits it to federation.
 ## Owner-local dry-run and publication
 
 The script is intentionally fail-closed and does not mutate with `dry-run`:
-run `python scripts/release.py dry-run --version 0.1.2 --tag v0.1.2 --expected-commit <exact-landed-main-sha> --json`.
+run `python scripts/release.py dry-run --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --json`.
 
 The dry-run verifies the branch, clean tree, exact `origin/main` identity,
 version markers, canonical changelog section, provider pins, absent remote
@@ -64,7 +64,7 @@ tag/release, and source-only release posture. It is the owner-local strict
 preflight for this non-federated repository.
 
 Only after the dry-run passes and the exact commit is on `main`, publish with
-the explicit mutation gate `python scripts/release.py publish --version 0.1.2 --tag v0.1.2 --expected-commit <exact-landed-main-sha> --confirm --json`.
+the explicit mutation gate `python scripts/release.py publish --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --confirm --json`.
 
 The command creates an annotated tag at the exact landed commit, pushes only
 that tag, and creates a non-draft, non-prerelease GitHub Release whose body is
@@ -75,11 +75,11 @@ different commit.
 
 On hosts whose system SSH configuration is not usable, keep the workaround
 explicit at the command boundary rather than changing repository remotes. Use
-`GIT_SSH_COMMAND='ssh -F /dev/null' python scripts/release.py publish --version 0.1.2 --tag v0.1.2 --expected-commit <exact-landed-main-sha> --confirm --json`.
+`GIT_SSH_COMMAND='ssh -F /dev/null' python scripts/release.py publish --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --confirm --json`.
 
 ## Postpublish audit
 
-Run the audit separately on the published state with `python scripts/release.py audit --version 0.1.2 --tag v0.1.2 --expected-commit <exact-landed-main-sha> --json`.
+Run the audit separately on the published state with `python scripts/release.py audit --version 0.1.0 --tag v0.1.0 --expected-commit <exact-landed-main-sha> --json`.
 
 The audit checks the annotated tag object and peeled commit, release body,
 release URL, published/non-prerelease/latest semantics, absence of unexpected

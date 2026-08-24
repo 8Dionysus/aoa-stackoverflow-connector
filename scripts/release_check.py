@@ -15,11 +15,11 @@ from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_PROVIDER_PINS = {
-    "aoa-kag@v0.5.2": "8136d3eb629da28cea1206d13a8f1df52ee14739",
-    "aoa-stats@v0.2.2": "f119805cda69b3edeb2a4c5e407368d70e68650d",
+    "aoa-kag@v0.5.0": "f46f146cc79a26fa81ad0f400b9c5774df293e57",
+    "aoa-stats@v0.2.0": "88ff38b1b38eef939f2c5b4541cbe8363a05fc8d",
 }
 EXPECTED_ACTION_PINS = {
-    "aoa-kag/.github/actions/repo-local-kag-index": "8136d3eb629da28cea1206d13a8f1df52ee14739",
+    "aoa-kag/.github/actions/repo-local-kag-index": "f46f146cc79a26fa81ad0f400b9c5774df293e57",
 }
 
 
@@ -38,17 +38,17 @@ def release_section(changelog: str, version: str) -> str:
 
 def _provider_pins(workflow: str) -> dict[str, str]:
     kag_match = re.search(
-        r"#\s*Provider:\s*aoa-kag@v0\.5\.2,\s*resolved at\s*([0-9a-f]{40})",
+        r"#\s*Provider:\s*aoa-kag@v0\.5\.0,\s*resolved at\s*([0-9a-f]{40})",
         workflow,
     )
     stats_match = re.search(
-        r"repository:\s*8Dionysus/aoa-stats.*?\n\s*#\s*Provider:\s*aoa-stats@v0\.2\.2,\s*resolved at\s*([0-9a-f]{40})",
+        r"repository:\s*8Dionysus/aoa-stats.*?\n\s*#\s*Provider:\s*aoa-stats@v0\.2\.0,\s*resolved at\s*([0-9a-f]{40})",
         workflow,
         re.DOTALL,
     )
     return {
-        "aoa-kag@v0.5.2": kag_match.group(1) if kag_match else "",
-        "aoa-stats@v0.2.2": stats_match.group(1) if stats_match else "",
+        "aoa-kag@v0.5.0": kag_match.group(1) if kag_match else "",
+        "aoa-stats@v0.2.0": stats_match.group(1) if stats_match else "",
     }
 
 
@@ -64,7 +64,7 @@ def _action_pins(workflow: str) -> dict[str, str]:
     }
 
 
-def validate(*, version: str = "0.1.2", tag: str = "v0.1.2") -> dict[str, Any]:
+def validate(*, version: str = "0.1.0", tag: str = "v0.1.0") -> dict[str, Any]:
     errors: list[str] = []
     pyproject_path = REPO_ROOT / "pyproject.toml"
     package_path = REPO_ROOT / "src" / "aoa_stackoverflow_connector" / "__init__.py"
@@ -122,8 +122,8 @@ def validate(*, version: str = "0.1.2", tag: str = "v0.1.2") -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", default="0.1.2")
-    parser.add_argument("--tag", default="v0.1.2")
+    parser.add_argument("--version", default="0.1.0")
+    parser.add_argument("--tag", default="v0.1.0")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
     result = validate(version=args.version, tag=args.tag)
